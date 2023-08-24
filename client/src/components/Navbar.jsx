@@ -25,7 +25,7 @@ const Wrapper = styled.div`
 `;
 
 const Search = styled.div`
-  width: 40%;
+  width: 35%;
   position: absolute;
   left: 0px;
   right: 0px;
@@ -33,10 +33,17 @@ const Search = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 5px;
-  border: 1px solid #ccc;
+  padding-left: 5px;
+  border: 1px solid gray;
   border-radius: 15px;
   color: ${({ theme }) => theme.text};
+`;
+
+const SearchButton = styled.button`
+  background-color: gray;
+  height: 100%;
+  border: none;
+  border-radius: 0 15px 15px 0;
 `;
 
 const Input = styled.input`
@@ -91,14 +98,15 @@ const Navbar = () => {
               placeholder="Search"
               onChange={(e) => setQ(e.target.value)}
             />
-            <SearchOutlinedIcon
-              style={{
-                cursor: "pointer",
-                borderLeft: "1px solid white",
-                paddingLeft: "10px",
-              }}
-              onClick={() => navigate(`/search?q=${q}`)}
-            />
+            <SearchButton>
+              <SearchOutlinedIcon
+                style={{
+                  cursor: "pointer",
+                  color: "white",
+                }}
+                onClick={() => navigate(`/search?q=${q}`)}
+              />
+            </SearchButton>
           </Search>
           {currentUser ? (
             <User>
